@@ -9,11 +9,11 @@ import java.util.Random;
 public class DataHelper {
     static Faker faker = new Faker(new Locale("en"));
     static Random random = new Random();
-    static int numberMonth = 1 + random.nextInt(9 - 1);
+    static int numberMonth = random.nextInt((12 + 1) - 1) + 1;
     static String wrongMonthNumber = Integer.toString(numberMonth);
-    static int cvc = 100 + random.nextInt(999 - 100);
+    static int cvc = random.nextInt((999 + 1) - 100) + 100;
     static String correctCVC = Integer.toString(cvc);
-    static int year = 26 + random.nextInt(99 - 26);
+    static int year = random.nextInt((99 + 1) - 20) + 20;
     static String wrongYear = Integer.toString(year);
 
     private DataHelper() {

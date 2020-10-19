@@ -1,4 +1,4 @@
-package ru.netology.page;
+package ru.netology.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -12,15 +12,15 @@ public class TripPage {
     private SelenideElement paymentBySelectedWayHeader = $("#root > div > h3");
 
 
-    public CardData selectBuyByDebitCard() {
+    public CardDataPage selectBuyByDebitCard() {
         buttonBuyByDebit.click();
         paymentBySelectedWayHeader.shouldHave(Condition.text("Оплата по карте"));
-        return new CardData();
+        return new CardDataPage();
     }
 
-    public CardData selectBuyByCreditCard() {
+    public CardDataPage selectBuyByCreditCard() {
         buttonBuyCredit.click();
         paymentBySelectedWayHeader.shouldHave(Condition.text("Кредит по данным карты"));
-        return new CardData();
+        return new CardDataPage();
     }
 }

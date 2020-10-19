@@ -1,4 +1,4 @@
-package ru.netology.test;
+package ru.netology.tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelper;
 import ru.netology.data.SqlUtils;
-import ru.netology.page.TripPage;
+import ru.netology.pages.TripPage;
 
 import java.sql.SQLException;
 
