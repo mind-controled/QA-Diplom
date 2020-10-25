@@ -7,29 +7,36 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class SqlUtils {
-    private static Connection getConnection() throws SQLException {
+    public static Connection getConnection() {
         String dbUrl = System.getProperty("db.url");
         String login = System.getProperty("login");
         String password = System.getProperty("password");
-        final Connection connection = DriverManager.getConnection(dbUrl, login, password);
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(dbUrl, login, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return connection;
     }
 
-    public static String getPaymentId() throws SQLException {
+    public static String getPaymentId() {
         String paymentId = null;
-        val idSQL = "SELECT paymentId FROM order_entity order by created desc limit 1;";
+        val idSQL = "SELECT payment_id FROM order_entity order by created desc limit 1;";
         try (val conn = getConnection();
              val statusStmt = conn.prepareStatement(idSQL)) {
             try (val rs = statusStmt.executeQuery()) {
                 if (rs.next()) {
-                    paymentId = rs.getString("paymentId");
+                    paymentId = rs.getString("payment_id");
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return paymentId;
     }
 
-    public static String getStatusForPaymentByDebitCard(String paymentId) throws SQLException {
+    public static String getStatusForPaymentByDebitCard(String paymentId) {
         String statusSQL = "SELECT status FROM payment_entity WHERE transaction_id =?; ";
         String status = null;
         try (val conn = getConnection();
@@ -40,11 +47,13 @@ public class SqlUtils {
                     status = rs.getString("status");
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return status;
     }
 
-    public static String getPaymentAmount(String paymentId) throws SQLException {
+    public static String getPaymentAmount(String paymentId) {
         String amountSQL = "SELECT amount FROM payment_entity WHERE transaction_id =?; ";
         String amount = null;
         try (val conn = getConnection();
@@ -55,11 +64,13 @@ public class SqlUtils {
                     amount = rs.getString("amount");
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return amount;
     }
 
-    public static String getStatusForPaymentByCreditCard(String paymentId) throws SQLException {
+    public static String getStatusForPaymentByCreditCard(String paymentId) {
         String statusSQL = "SELECT status FROM credit_request_entity WHERE bank_id =?; ";
         String status = null;
         try (val conn = getConnection();
@@ -70,6 +81,8 @@ public class SqlUtils {
                     status = rs.getString("status");
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return status;
     }
