@@ -1,9 +1,9 @@
 # О программе:
 Предназначена для автоматизированного тестирования сервиса по покупке тура с помощью дебетовой карты или с получением кредита по данным дебетовой карты
 ## Документация:
-* [План автоматизации тестирования](https://github.com/mind-controled/QA-Diplom/blob/master/docs/TestPlan.md)
-* [Отчет по итогам тестирования](https://github.com/mind-controled/QA-Diplom/blob/master/docs/TestReport.md)
-* [Отчет по итогам автоматизации](https://github.com/mind-controled/QA-Diplom/blob/master/docs/Report.md)
+* [План автоматизации тестирования](https://github.com/mind-controled/QA-Diplom/blob/master/docs/Plan.md)
+* [Отчет по итогам тестирования](https://github.com/mind-controled/QA-Diplom/blob/master/docs/Report.md)
+* [Отчет по итогам автоматизации](https://github.com/mind-controled/QA-Diplom/blob/master/docs/Summary.md)
 ## Тестовое окружение:
 1. **Node.js**
 1. **Docker**
